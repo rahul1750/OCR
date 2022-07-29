@@ -1,0 +1,23 @@
+{% extends 'webocr/base.html' %}
+{% block title %}Details{% endblock %}
+{% block body_block %}
+    {% if user.is_authenticated %}
+  Hi {{ user.username }}!
+{% endif %}
+
+<h2>You can place an order here </h2>
+    <h2>Products:</h2>
+<ul>
+    {% for ele in prodlist %}
+       <li> <a href="{% url 'webocr:productdetail' ele.id  %}">Name : {{ ele.name}} ------ Price : {{ ele.price}}</a>  </li>
+    {% endfor %}
+</ul>
+<h2>Order Form:</h2>
+    <form method="POST"> {% csrf_token %}
+     {{ form.as_p }}
+     <input type="submit" value="Save">
+    </form>
+    <p><a href="{% url 'webocr:index' %}">Index</a></p>{# Using Namespacing #}
+    <p><a href="{% url 'webocr:about' %}">About page</a></p> {# Using Namespacing #}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+.h1{
+    display: inline;
+    margin: 15px;
+    font-family: "Times New Roman";
+    --button-hover-bg: 10;
+}
+
+.h0{
+    display: inline;
+    background-color: lawngreen;
+    font-family: "Times New Roman";
+}
+.hbar1 {
+    display: inline;
+    margin: 15px;
+}

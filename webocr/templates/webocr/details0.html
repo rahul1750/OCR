@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+ <title>Online Store APP</title>
+</head>
+<body>
+ {% if category %}
+ <h2>Warehouse: {{  category.warehouse }}</h2>
+ <h2>Products in Appliances with cat_no={{ cat_no }} are :</h2>
+ <ol>
+ {% for prod in prod_list %}
+ <li> {{ prod.name}} </li>
+ {% endfor %}
+ </ol>
+ {% else %}
+ <strong>There are no products!</strong>
+ {% endif %}
+<p>Click this link to go to <a href="{% url 'webocr:index' %}">Index</a></p>{# Using Namespacing #}
+<p>Click this link to go to<a href="{% url 'webocr:about' %}">About page</a></p> {# Using Namespacing #}
+
+</body>
+</html>

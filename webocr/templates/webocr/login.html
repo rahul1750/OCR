@@ -1,0 +1,15 @@
+{% extends 'webocr/base.html' %}
+{% block title %}Login{% endblock %}
+{% block body_block %}
+
+    <form method= "post" action="{% url 'webocr:login' %}">
+            {% csrf_token %}
+
+        Username :<input type="text" name="username">
+        Password :<input type="password" name="password">
+        <input type="submit" value="login">
+    </form>
+    <p><a href="{% url 'webocr:index' %}">Index</a></p>{# Using Namespacing #}
+    <p><a href="{% url 'webocr:about' %}">About page</a></p> {# Using Namespacing #}
+
+{% endblock %}

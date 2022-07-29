@@ -1,0 +1,13 @@
+{% extends 'webocr/base.html' %}
+{% block title %}About US{% endblock %}
+{% block myhdg %}Hello Alpa {% endblock %}
+{% block body_block %}
+
+    This is an Online Store App
+        <p><a href="{% url 'webocr:index' %}">Index</a></p>{# Using Namespacing #}
+        Previous Visits : {{ about_visits }}
+
+        <p><a href="/webocr/">Index</a></p>
+
+
+{% endblock %}

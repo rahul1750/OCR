@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+ <head>
+ <link rel="stylesheet" type="text/css" href="{% static 'webocr/style.css' %}"
+/>
+ <title>Online Store APP - {% block title %}Welcome!{% endblock %}</title>
+
+ </head>
+ <body>
+ <div>
+
+{#    Features Task 5 - Show login and my orders link for logged in users otherwise login and register links#}
+    <div>
+         {% if user.is_authenticated %}
+            <p><a href="{% url 'webocr:logout' %}">Logout</a> / <a href="{% url 'webocr:myorders' %}">My Orders</a></p> {# Using Namespacing #}
+        {% else %}
+            <p><a href="{% url 'webocr:login' %}">Login</a> / <a href="{% url 'webocr:register' %}">Register Here</a></p> {# Using Namespacing #}
+        {% endif %}
+     </div>
+
+{#    Features Task 6 -  Hello <first name> of currently logged in user #}
+    <div>
+        {% if user.is_authenticated %}
+        <h1>Hello {{ user.first_name }}!</h1>
+        {% if request.session.last_login %}
+        <p>Last Login: {{ request.session.last_login }}</p>
+        {% else %}
+            <p>"Last login was more than one hour ago"</p>
+         {% endif %}
+    {% endif %}
+    </div>
+ {% block body_block %}
+
+     ***
+
+ {% endblock %}
+ </div>
+ <hr />
+ <div>
+ <ul>
+ <li class="hbar1"><a href="{% url 'webocr:about' %}">Find out about this
+site</a></li>
+ <li class="hbar1"><a href = "{% url 'webocr:index' %}">Click here to
+return to main page</a><br/></li>
+     {% if user.is_authenticated %}
+        <li class="hbar1"><a href = "{% url 'webocr:myorders' %}">My orders</a><br/></li>
+    {% endif %}
+  <li class="hbar1">    <a href="{% url 'webocr:products' %}">Products</a> {# Using Namespacing #}
+</li>
+ </ul>
+ {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+ </div>
+ </body>
+</html>

@@ -1,0 +1,51 @@
+{% extends 'webocr/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body_block %}
+
+    {% if user.is_authenticated %}
+        <h1>Hi {{ user.username }}!</h1>
+    {% endif %}
+
+    <table border="solid">
+    <th>
+        Product
+    </th>
+    <th>
+        No. of Units
+    </th>
+    <th>
+        Order Status
+    </th>
+    <th>
+        Last Update
+    </th>
+    <th>
+        Total Cost
+    </th>
+    {% for order in ord %}
+        <tr>
+           <td>
+            {{ order.product.name }}
+           </td>
+            <td>
+            {{ order.num_units }}
+           </td>
+            <td>
+            {{ order.order_status }}
+           </td>
+            <td>
+            {{ order.status_date }}
+           </td>
+             <td>
+            {{ order.tot_cost }}
+           </td>
+        </tr>
+    {% endfor %}
+    </table>
+    {% for order in ord %}
+    {% endfor %}
+
+
+{% endblock %}

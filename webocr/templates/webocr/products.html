@@ -1,0 +1,17 @@
+{% extends 'webocr/base.html' %}
+
+{% block title %}Products{% endblock %}
+{% block body_block %}
+    {% if user.is_authenticated %}
+        Hi {{ user.username }}!
+    {% endif %}
+
+<h2>Products:</h2>
+<ul>
+    {% for ele in prodlist %}
+        <li> <a href="{% url 'webocr:productdetail' ele.id  %}">{{ ele.name }}</a>  </li>
+    {% endfor %}
+</ul>
+<p><a href="{% url 'webocr:placeorder' %}">Order Create</a></p> {# Using Namespacing #}
+
+{% endblock %}

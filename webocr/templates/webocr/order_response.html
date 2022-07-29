@@ -1,0 +1,12 @@
+{% extends 'webocr/base.html' %}
+{% block title %}Details{% endblock %}
+{% block body_block %}
+    {% if user.is_authenticated %}
+  Hi {{ user.username }}!
+{% endif %}
+
+    <p>{{ msg }} </p>
+    <p><a href="{% url 'webocr:index' %}">Index</a></p>{# Using Namespacing #}
+    <p><a href="{% url 'webocr:about' %}">About page</a></p> {# Using Namespacing #}
+
+{% endblock %}
